@@ -1,0 +1,37 @@
+{
+  "name": "abdero-fetcher",
+  "description": "fetch mails from imap",
+  "version": "0.1.0",
+  "homepage": "https://github.com/parroit/abdero-fetcher",
+  "author": {
+    "name": "Andrea Parodi",
+    "email": "andrea.parodi@ebansoftware.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/parroit/abdero-fetcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/parroit/abdero-fetcher/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/parroit/abdero-fetcher/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/abdero-fetcher",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-mocha-test": "~0.7.0",
+    "expect.js": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "keywords": []
+}
