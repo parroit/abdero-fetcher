@@ -10,7 +10,7 @@
 
 
 var fs = require("fs"),
-    concat = require('concat-stream'),
+    concat = require("concat-stream"),
     abderoFetcher = require("../lib/abdero-fetcher"),
     Fetcher = abderoFetcher.Fetcher,
     expect = require("expect.js");
