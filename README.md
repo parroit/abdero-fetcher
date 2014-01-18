@@ -28,6 +28,7 @@ transport = new Fetcher({
         rejectUnauthorized: false
     }
 });
+```
 
 ### Connect and retrieve a list of all boxes in account
 
