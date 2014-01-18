@@ -1,6 +1,6 @@
 {
   "name": "abdero-fetcher",
-  "description": "fetch mails from imap",
+  "description": "fetch mails from imap, and stream them",
   "version": "0.1.0",
   "homepage": "https://github.com/parroit/abdero-fetcher",
   "author": {
@@ -14,12 +14,10 @@
   "bugs": {
     "url": "https://github.com/parroit/abdero-fetcher/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/parroit/abdero-fetcher/blob/master/LICENSE-MIT"
-    }
-  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/parroit/abdero-fetcher/blob/master/LICENSE-MIT"
+  }],
   "main": "lib/abdero-fetcher",
   "engines": {
     "node": ">= 0.10.0"
@@ -34,7 +32,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-markdox": "~0.1.0"
   },
-  "keywords": [],
+  "keywords": ["imap", "mail", "stream"],
   "dependencies": {
     "imap": "~0.8.7",
     "mailparser": "~0.3.6",
