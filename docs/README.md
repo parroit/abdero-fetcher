@@ -42,5 +42,62 @@ to user using node Stream pattern.
 
 * **options** *{Object}* options for the fetcher object. main use is to specify connection options
 
+## connect()
+
+connect to imap server
+
+### Return:
+
+* **Object** a promise fullfilled when imap server is connected
+
+## disconnect()
+
+disconnect from imap server
+
+### Return:
+
+* **Object** a promise fullfilled when imap server is disconnected
+
+## download(folder, uid)
+
+read a single message from imap server
+
+### Params: 
+
+* **String** *folder* - path of the folder containing the message
+
+* **String** *uid* - uid of the message to read
+
+### Return:
+
+* **Object** a readable stream containing the message in json format
+
+## listBoxes()
+
+return list of boxes in the account, in json format
+
+### Return:
+
+* **Object** a readable stream of boxes, in JSON format
+
+## list(folderName, query)
+
+Read a list of messages from a folder.
+
+### Messages structure
+returned stream contains an array of all messages in json format
+Each message contains FROM TO SUBJECT DATE
+but no body or attachments.
+
+### Params: 
+
+* **String** *folderName* - the folder to read
+
+* **String** *query* - filter returned messages using this imap query
+
+### Return:
+
+* **Object** a readable stream that read messages in JSON format
+
 <!-- End lib/abdero-fetcher.js -->
 
