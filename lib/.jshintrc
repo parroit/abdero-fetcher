@@ -3,7 +3,7 @@
   // Example: https://github.com/jshint/jshint/blob/master/examples/.jshintrc
   // Documentation: http://www.jshint.com/docs/
   "camelcase": true,
-  "indent": 2,
+  "indent": 4,
   "newcap": true,
   "nonew": true,
   "quotmark": true,
@@ -14,11 +14,6 @@
 
   "node": true,
   
-  "globals": {
-    "describe": true,
-    "it": true,
-    "before": true
-  },
   
   
   "undef": true,

@@ -14,7 +14,7 @@ module.exports = function(grunt) {
             }
         },
         markdox: {
-            
+
             sourceFiles: {
                 src: 'lib/*.js',
                 dest: 'docs/README.md'
