@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
@@ -13,7 +13,13 @@ module.exports = function (grunt) {
                 }
             }
         },
-
+        markdox: {
+            
+            sourceFiles: {
+                src: 'lib/*.js',
+                dest: 'docs/README.md'
+            }
+        },
         mochaTest: {
             test: {
                 options: {
@@ -27,7 +33,10 @@ module.exports = function (grunt) {
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-markdox');
 
+
+    grunt.registerTask('doc', 'markdox');
     grunt.registerTask('test', 'mochaTest');
     grunt.registerTask('watch-test', 'watch');
 
