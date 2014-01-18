@@ -113,24 +113,20 @@ describe("abderoFetcher", function() {
 
 
 
-                    transport.list("INBOX", "1:*")
-                        .then(function(msgsStream) {
+                    var msgsStream = transport.list("INBOX", "1:*");
 
-                            msgs = [];
+                    msgs = [];
 
-                            msgsStream.on("data", function(msg) {
-                                msgs.push(msg);
-                            });
-                            msgsStream.once("end", function() {
+                    msgsStream.on("data", function(msg) {
+                        //console.dir(msg)
+                        msgs.push(msg);
+                    });
 
+                    msgsStream.once("end", function() {
+                        done();
+                    });
 
-                                done();
-
-                            });
-
-                        })
-
-                    .then(null, function(err) {
+                    msgsStream.on("error", function(err) {
                         console.log(err.stack);
                     });
 
