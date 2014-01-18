@@ -17,6 +17,7 @@ to user using node Stream pattern.
 
 ### Example options object
 
+```
    var fetcher = new Fetcher({
      user: process.env.MY_MAIL_ADDRESS,
      password: process.env.MY_MAIL_PASSWORD,
@@ -27,7 +28,7 @@ to user using node Stream pattern.
          rejectUnauthorized: false
      }
    })
-
+```
 ### main options properties: 
  * user - username of the imap account.
  * password - password of the imap account.
