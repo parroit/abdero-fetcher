@@ -10,6 +10,7 @@
 
 
 var fs = require("fs"),
+    concat = require('concat-stream'),
     abderoFetcher = require("../lib/abdero-fetcher"),
     Fetcher = abderoFetcher.Fetcher,
     expect = require("expect.js");
@@ -309,25 +310,30 @@ describe("abderoFetcher", function() {
                 before(function(done) {
                     this.timeout(25000);
 
+                    var msgStream = transport.download("INBOX", 6);
 
-                    transport.download("INBOX", 6)
-                        .then(function(msg) {
-                            var path = "./test/files/expected-body.html";
-                            var expected = fs.readFileSync(path, "utf8");
+                    msgStream.pipe(concat(function(data) {
+                        var msg = JSON.parse(data),
+                            path = "./test/files/expected-body.html",
+                            expected = fs.readFileSync(path, "utf8");
 
-                            html = msg.html.replace(/[\r\n ]/g, "");
-                            text = msg.text.replace(/[\r\n ]/g, "");
+                        html = msg.html.replace(/[\r\n ]/g, "");
+                        text = msg.text.replace(/[\r\n ]/g, "");
 
-                            done();
 
-                        })
+                        done();
 
-                    .then(null, function(err) {
+
+                    }));
+
+
+                    msgStream.on("error", function(err) {
                         console.log(err.stack);
                     });
 
 
                 });
+
 
                 it("return message body as html", function() {
                     this.timeout(25000);
