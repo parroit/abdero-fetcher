@@ -119,8 +119,8 @@ describe("abderoFetcher", function() {
                     msgs = [];
 
                     msgsStream.on("data", function(msg) {
-                        //console.dir(msg)
-                        msgs.push(msg);
+
+                        msgs.push(JSON.parse(msg));
                     });
 
                     msgsStream.once("end", function() {
@@ -199,13 +199,14 @@ describe("abderoFetcher", function() {
                 before(function(done) {
                     this.timeout(25000);
 
-                    transport.listBoxes()
-                        .then(function(boxes) {
-                            boxesList = boxes;
-                            done();
-                        })
+                    var stream = transport.listBoxes();
 
-                    .then(null, function(err) {
+                    stream.pipe(concat(function(data) {
+                        boxesList = JSON.parse(data);
+                        done();
+                    }));
+
+                    stream.on("error", function(err) {
                         console.log(err.stack);
                     });
 
@@ -239,7 +240,7 @@ describe("abderoFetcher", function() {
                 });
 
             });
-
+            /*
             describe("fetch", function() {
 
 
@@ -302,7 +303,7 @@ describe("abderoFetcher", function() {
 
                 });
             });
-
+*/
             describe("download", function() {
                 var html,
                     text;
