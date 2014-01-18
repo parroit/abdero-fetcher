@@ -10,11 +10,11 @@
 
 
 var fs = require("fs"),
-    imap = require("../lib/imap-fetcher"),
-    Fetcher = imap.Fetcher,
+    abdero_fetcher = require("../lib/abdero-fetcher"),
+    Fetcher = abdero_fetcher.Fetcher,
     
-    expect = require("expect.js"),
-    abdero_fetcher = require("../lib/abdero-fetcher");
+    expect = require("expect.js")
+   ;
 
 
 
@@ -22,7 +22,7 @@ var fs = require("fs"),
 describe("imapFetcher", function() {
     describe("module", function() {
         it("is defined", function() {
-            expect(imap).to.be.a("object");
+            expect(abdero_fetcher).to.be.a("object");
 
         });
     });
@@ -79,14 +79,14 @@ describe("imapFetcher", function() {
 
 
             it("should be disconnected at start", function() {
-                expect(transport.status).to.be.equal(imap.Status.disconnected);
+                expect(transport.status).to.be.equal(abdero_fetcher.Status.disconnected);
 
             });
 
             it("go to connected upon connection", function(done) {
                 this.timeout(5000);
                 transport.connect(function() {
-                    expect(transport.status).to.be.equal(imap.Status.connected);
+                    expect(transport.status).to.be.equal(abdero_fetcher.Status.connected);
                     transport.disconnect(function() {
                         done();
                     });
@@ -102,7 +102,7 @@ describe("imapFetcher", function() {
 
                     transport.disconnect(function() {
                         expect(transport.status).to.be.equal(
-                            imap.Status.disconnected
+                            abdero_fetcher.Status.disconnected
                         );
                         done();
                     });
@@ -299,7 +299,7 @@ describe("imapFetcher", function() {
 
                             messageStream.once("end", function() {
                                 var fs = require("fs");
-                                var path = "./test/expected.msg";
+                                var path = "./test/files/expected.msg";
                                 var expected = fs.readFileSync(path, "utf8");
                                 var actual = buffer.replace(/[\r\n]/g, "");
                                 expect(actual).to.be.equal(
@@ -332,7 +332,7 @@ describe("imapFetcher", function() {
                 transport.connect(function() {
                     transport.download("INBOX", 6)
                         .then(function(msg) {
-                            var path = "./test/expected-body.html";
+                            var path = "./test/files/expected-body.html";
                             var expected = fs.readFileSync(path, "utf8");
 
                             html = msg.html.replace(/[\r\n ]/g, "");
@@ -354,7 +354,7 @@ describe("imapFetcher", function() {
 
             it("return message body as html", function() {
                 this.timeout(25000);
-                var path = "./test/expected-body.html";
+                var path = "./test/files/expected-body.html";
                 var expected = fs.readFileSync(path, "utf8");
                 expected = expected.replace(/[\r\n ]/g, "");
 
@@ -368,7 +368,7 @@ describe("imapFetcher", function() {
 
             it("return message body as text", function() {
                 this.timeout(25000);
-                var path = "./test/expected-body.txt";
+                var path = "./test/files/expected-body.txt";
                 var expected = fs.readFileSync(path, "utf8");
                 expected = expected.replace(/[\r\n ]/g, "");
 

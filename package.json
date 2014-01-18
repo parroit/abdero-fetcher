@@ -34,5 +34,13 @@
     "grunt-contrib-watch": "~0.5.3"
   },
   "keywords": [],
-  "dependencies": {}
+  "dependencies": {
+    "imap": "~0.8.7",
+    "mailparser": "~0.3.6",
+    "promise": "~3.2.0",
+    "through": "~2.3.4",
+    "concat-stream": "~1.4.1",
+    "moment": "~2.5.0",
+    "addressparser": "~0.2.0"
+  }
 }
