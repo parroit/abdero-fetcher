@@ -12,7 +12,7 @@ abdero_fetcher.awesome(); // "awesome"
 ```
 
 ## Documentation
-_(Coming soon)_
+see [docs folder](docs/README.md)
 
 ## Examples
 _(Coming soon)_
